@@ -2,13 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 30 33% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -17,41 +13,34 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 25 76% 33%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 45 90% 75%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 45 97% 85%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 35 75% 85%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,10 +85,211 @@ All colors MUST be HSL.
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border scroll-smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-montserrat;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+  
+  .section {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+  }
+  
+  .gold-gradient {
+    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text;
+  }
+  
+  .card-elegant {
+    @apply bg-white border border-gold/30 rounded-lg shadow-md p-6 transition-all duration-300;
+  }
+
+  .button-gold {
+    @apply bg-gold hover:bg-gold-dark text-white font-medium py-2 px-6 rounded-md transition-all duration-300 shadow-md transform hover:scale-105;
+  }
+
+  .border-animated {
+    @apply relative rounded-lg overflow-hidden;
+  }
+
+  .border-animated::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(90deg, #d4af37, #f5d680, #d4af37);
+    background-size: 200% 100%;
+    animation: border-dance 4s ease infinite;
+    z-index: -1;
+    padding: 2px;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Traditional decorative pattern for borders */
+  .border-pattern {
+    background-image: repeating-linear-gradient(45deg, #d4af37 0, #d4af37 1px, transparent 0, transparent 50%);
+    background-size: 10px 10px;
+  }
+  
+  /* Kolam-inspired dotted pattern */
+  .kolam-pattern {
+    background-image: radial-gradient(#d4af37 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+}
+
+@layer components {
+  .invite-container {
+    @apply max-w-5xl mx-auto bg-white bg-opacity-95 rounded-xl shadow-xl overflow-hidden transition-all duration-500;
+  }
+  
+  .timeline-item {
+    @apply relative pl-8 pb-10 border-l border-gold last:border-0 transition-all duration-300 hover:pl-10;
+  }
+  
+  .timeline-dot {
+    @apply absolute -left-2.5 w-5 h-5 rounded-full bg-gold animate-pulse-gold transition-all duration-300;
+  }
+  
+  .divider {
+    @apply flex items-center my-8;
+  }
+  
+  .divider::before, .divider::after {
+    content: '';
+    @apply flex-grow h-px bg-gold/30 transition-all duration-300;
+  }
+  
+  .divider-icon {
+    @apply mx-4 text-gold transition-all duration-300 transform hover:scale-110;
+  }
+  
+  /* Traditional decorative elements */
+  .mangalsutra-pattern {
+    @apply relative;
+  }
+  
+  .mangalsutra-pattern::before {
+    content: "";
+    @apply absolute w-2 h-2 rounded-full bg-gold;
+    left: calc(50% - 1px);
+    animation: pulse 2s infinite;
+  }
+  
+  .mangalsutra-pattern::after {
+    content: "";
+    @apply absolute w-4 h-4 rounded-full border border-gold;
+    left: calc(50% - 2px);
+    top: -1px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Celebration animations */
+@keyframes firework {
+  0% {
+    transform: scale(0) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateY(-50px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(12);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .invite-container {
+    @apply my-4 mx-2 rounded-lg;
+  }
+  
+  .timeline-item {
+    @apply pl-6 pb-8;
+  }
+  
+  .card-elegant {
+    @apply p-4;
+  }
+}
+
+/* Animation utilities */
+.animate-firework {
+  animation: firework 3s ease-out forwards;
+}
+
+.animate-sparkle {
+  animation: sparkle 4s ease-in-out infinite;
+}
+
+.animate-burst {
+  animation: burst 2s ease-out forwards;
 }
