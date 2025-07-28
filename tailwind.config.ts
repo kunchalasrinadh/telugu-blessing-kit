@@ -18,11 +18,6 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				'montserrat': ['Montserrat', 'sans-serif'],
-				'playfair': ['Playfair Display', 'serif'],
-				'dancing': ['Dancing Script', 'cursive'],
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -67,15 +62,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for the Telugu blessing theme
 				gold: {
-					DEFAULT: '#D4AF37',
-					light: '#F5D680',
-					dark: '#B8941F'
+					light: '#f5d680',
+					DEFAULT: '#d4af37',
+					dark: '#9e7c1e'
 				},
-				cream: '#FDF5E6',
-				'warm-gray': '#7C6F64',
-				'gold-dark': '#B8941F'
+				cream: '#FEF7CD',
+				warmGray: '#8A898C',
+			},
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'montserrat': ['Montserrat', 'sans-serif'],
+				'dancing': ['Dancing Script', 'cursive'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -109,10 +107,10 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
-				'slide-in-up': {
+				'slide-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(100px)'
+						transform: 'translateY(20px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -121,19 +119,91 @@ export default {
 				},
 				'pulse-gold': {
 					'0%, 100%': {
-						opacity: '1'
+						boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)'
 					},
 					'50%': {
-						opacity: '0.5'
+						boxShadow: '0 0 0 10px rgba(212, 175, 55, 0)'
 					}
-				}
+				},
+				'border-dance': {
+					'0%, 100%': {
+						backgroundPosition: '0% 50%'
+					},
+					'50%': {
+						backgroundPosition: '100% 50%'
+					}
+				},
+        "zoom-in": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(1.1) translateY(10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1) translateY(0)",
+          },
+        },
+        "slide-in-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(100%)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "firework": {
+          "0%": {
+            transform: "scale(0) translateY(0)",
+            opacity: "1"
+          },
+          "50%": {
+            transform: "scale(1) translateY(-50px)",
+            opacity: "1"
+          },
+          "100%": {
+            transform: "scale(0.5) translateY(-100px)",
+            opacity: "0"
+          }
+        },
+        "sparkle": {
+          "0%, 100%": {
+            transform: "scale(0) rotate(0deg)",
+            opacity: "0"
+          },
+          "50%": {
+            transform: "scale(1) rotate(180deg)",
+            opacity: "1"
+          }
+        },
+        "burst": {
+          "0%": {
+            transform: "scale(0)",
+            opacity: "1"
+          },
+          "50%": {
+            transform: "scale(8)",
+            opacity: "0.5"
+          },
+          "100%": {
+            transform: "scale(12)",
+            opacity: "0"
+          }
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'slide-in-up': 'slide-in-up 0.6s ease-out',
-				'pulse-gold': 'pulse-gold 2s ease-in-out infinite'
+				'fade-in': 'fade-in 0.8s ease-out',
+				'slide-in': 'slide-in 1s ease-out',
+				'pulse-gold': 'pulse-gold 2s infinite',
+				'border-dance': 'border-dance 4s ease infinite',
+        "zoom-in": "zoom-in 1.2s ease-out",
+        "slide-in-up": "slide-in-up 1.2s ease-out",
+        "firework": "firework 3s ease-out forwards",
+        "sparkle": "sparkle 4s ease-in-out infinite",
+        "burst": "burst 2s ease-out forwards",
 			}
 		}
 	},
