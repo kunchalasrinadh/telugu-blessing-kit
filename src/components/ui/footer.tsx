@@ -13,7 +13,7 @@ export function Footer() {
           We feel blessed to welcome you!
         </h3>
 
-        <p className="text-warmGray mb-8 max-w-lg mx-auto">
+        <p className="text-warm-gray mb-8 max-w-lg mx-auto">
           Thank you for being a part of these precious moments in our new home. Your presence will make our celebration complete.
         </p>
 
@@ -33,14 +33,14 @@ export function Footer() {
           <div className="flex gap-4 justify-center items-center">
             <a
               href="tel:9985302279"
-              className="flex items-center gap-2 text-warmGray hover:text-gold-dark font-medium transition"
+              className="flex items-center gap-2 text-warm-gray hover:text-gold-dark font-medium transition"
             >
               <Phone className="w-5 h-5" />
               99853 02279
             </a>
             <a
               href="mailto:srinadhkunchala99@gmail.com"
-              className="flex items-center gap-2 text-warmGray hover:text-gold-dark font-medium transition"
+              className="flex items-center gap-2 text-warm-gray hover:text-gold-dark font-medium transition"
             >
               <Mail className="w-5 h-5" />
               srinadhkunchala99@gmail.com

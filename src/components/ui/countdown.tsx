@@ -59,7 +59,7 @@ export function Countdown({ targetDate }: CountdownProps) {
         <h2 className="font-playfair text-4xl font-bold mb-4 gold-gradient">
           Counting Down
         </h2>
-        <p className="text-warmGray mb-10 max-w-2xl mx-auto">
+        <p className="text-warm-gray mb-10 max-w-2xl mx-auto">
           We look forward to celebrating this special day with you. Mark your calendar and join us in blessing our new home.
         </p>
 
@@ -78,7 +78,7 @@ export function Countdown({ targetDate }: CountdownProps) {
               <div className="text-4xl md:text-5xl font-dancing text-gold mb-2">
                 {String(item.value).padStart(2, "0")}
               </div>
-              <div className="text-sm md:text-base font-medium text-warmGray">
+              <div className="text-sm md:text-base font-medium text-warm-gray">
                 {item.label}
               </div>
             </div>

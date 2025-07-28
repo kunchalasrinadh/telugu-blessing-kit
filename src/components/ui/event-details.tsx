@@ -51,7 +51,7 @@ export function EventDetails({ address, events }: EventDetailsProps) {
             <MapPin className="text-gold h-6 w-6 flex-shrink-0" />
             <div>
               <h4 className="font-playfair font-medium text-lg mb-1">Venue Location</h4>
-              <p className="text-warmGray">{address}</p>
+              <p className="text-warm-gray">{address}</p>
             </div>
           </div>
           

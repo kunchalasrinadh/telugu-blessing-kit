@@ -20,7 +20,7 @@ export function LocationMap({ address, googleMapUrl }: LocationMapProps) {
               <MapPin className="text-gold h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-playfair font-medium text-lg mb-3">Event Address</h4>
-                <p className="text-warmGray mb-5">{address}</p>
+                <p className="text-warm-gray mb-5">{address}</p>
                 <a 
                   href={googleMapUrl} 
                   target="_blank" 

@@ -19,7 +19,7 @@ export function InvitationHeader({ title, subtitle, date }: InvitationHeaderProp
       
       <div className="w-24 h-1 bg-gold mx-auto mb-6 animate-fade-in" style={{ animationDelay: "0.3s" }}></div>
       
-      <h2 className="font-montserrat text-warmGray text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
+      <h2 className="font-montserrat text-warm-gray text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
         {subtitle}
       </h2>
       

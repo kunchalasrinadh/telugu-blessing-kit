@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'montserrat': ['Montserrat', 'sans-serif'],
+				'playfair': ['Playfair Display', 'serif'],
+				'dancing': ['Dancing Script', 'cursive'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +66,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for the Telugu blessing theme
+				gold: {
+					DEFAULT: '#D4AF37',
+					light: '#F5D680',
+					dark: '#B8941F'
+				},
+				cream: '#FDF5E6',
+				'warm-gray': '#7C6F64',
+				'gold-dark': '#B8941F'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +98,42 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(100px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'pulse-gold': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.5'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'slide-in-up': 'slide-in-up 0.6s ease-out',
+				'pulse-gold': 'pulse-gold 2s ease-in-out infinite'
 			}
 		}
 	},
