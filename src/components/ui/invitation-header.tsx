@@ -10,7 +10,7 @@ export function InvitationHeader({ title, subtitle, date }: InvitationHeaderProp
   return (
     <div className="bg-gradient-to-b from-white via-cream to-white py-16 md:py-24 px-4 text-center border-b border-gold/20">
       <h3 className="text-gold-dark font-dancing text-3xl md:text-4xl mb-4 animate-fade-in">
-        You&apos;re invited to our
+        మా గృహప్రవేశ వేడుకకు మిమ్మల్ని ఆహ్వానిస్తున్నాము
       </h3>
       
       <h1 className="gold-gradient font-playfair text-5xl md:text-7xl font-bold mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
