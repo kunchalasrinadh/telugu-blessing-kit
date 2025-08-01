@@ -8,7 +8,7 @@ import { Gallery } from "@/components/ui/gallery";
 
 const Index = () => {
   // Event schedule details in Telugu
-  const eventDate = "శుక్రవారం, ఆగస్టు 8, 2025 • గృహప్రవేశం రాత్రి 11:27 గంటలకు";
+  const eventDate = "శుక్రవారం, ఆగస్టు 8, 2025 గృహప్రవేశం రాత్రి 11:27 గంటలకు";
   const fullAddress = "డి నెంబర్ 494-B1-A, లేక్ వ్యూ హోమ్స్, గంగమ్మ తల్లి గుడి దగ్గర, నరసరావుపేట, పల్నాడు జిల్లా, ఆంధ్రప్రదేశ్";
   const googleMapUrl = "https://www.google.com/maps/dir/?api=1&destination=722R%2BQRF%2C+Guntur%2C+Andhra+Pradesh+522601";
   
@@ -19,7 +19,7 @@ const Index = () => {
   const eventSchedule = [
     {
       time: "శుక్రవారం, ఆగస్టు 8, రాత్రి 11:27",
-      activity: "గృహప్రవేశం (గృహ వార్మింగ్ వేడుక)",
+      activity: "గృహప్రవేశం (ఇల్లు ప్రవేశ వేడుక)",
     },
     {
       time: "శనివారం, ఆగస్టు 9, ఉదయం 6:00",
@@ -31,7 +31,7 @@ const Index = () => {
     },
     {
       time: "శనివారం, ఆగస్టు 9, మధ్యాహ్నం 12:00",
-      activity: "మధ్యాహ్న భోజనం ప్రసాదం",
+      activity: "భోజన ప్రసాదం",
     },
   ];
 
@@ -90,7 +90,7 @@ const Index = () => {
         </div>
 
         <InvitationHeader
-          title="గృహ వేడుక ఆహ్వానం"
+          title="గృహ ప్రవేశ వేడుక ఆహ్వానం"
           subtitle="గొప్ప ఆనందంతో మరియు దైవిక ఆశీర్వాదాలతో, మా గృహప్రవేశ వేడుక యొక్క పవిత్ర సందర్భాన్ని పవిత్రం చేయడానికి మిమ్మల్ని ఆహ్వానిస్తున్నాము."
           date={eventDate}
         />
