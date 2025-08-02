@@ -61,7 +61,7 @@ export const InvitationVideo = ({ videoSrc, title = "ఆహ్వాన వీ�
   return (
     <div className="bg-gradient-to-b from-cream to-white py-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-playfair text-4xl font-bold mb-10 text-center gold-gradient">
+        <h2 className="font-playfair text-4xl font-bold mb-10 text-center gold-gradient py-2" style={{ lineHeight: "1.3" }}>
           {title}
         </h2>
         
