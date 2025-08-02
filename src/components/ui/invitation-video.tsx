@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { Play, Pause } from 'lucide-react';
 
 interface InvitationVideoProps {
   videoSrc: string;
@@ -7,62 +8,78 @@ interface InvitationVideoProps {
 
 export const InvitationVideo = ({ videoSrc, title = "ఆహ్వాన వీడియో" }: InvitationVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !hasStarted) {
-          setIsInView(true);
-          setHasStarted(true);
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+        
+        if (entry.isIntersecting && videoRef.current) {
           // Start playing when video comes into view
-          video.play().catch(console.error);
+          videoRef.current.play().then(() => {
+            setIsPlaying(true);
+          }).catch(() => {
+            // Autoplay failed, user interaction required
+            setIsPlaying(false);
+          });
+        } else if (!entry.isIntersecting && videoRef.current) {
+          // Pause when video goes out of view
+          videoRef.current.pause();
+          setIsPlaying(false);
         }
       },
       {
-        threshold: 0.3, // Play when 30% of video is visible
+        threshold: 0.5, // Trigger when 50% of video is visible
+        rootMargin: '0px'
       }
     );
 
-    observer.observe(video);
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasStarted]);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {
+          console.log('Play failed');
+        });
+      }
+    }
+  };
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-br from-cream via-white to-cream">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 animate-fade-in">
-            {title}
-          </h2>
-          <div className="w-24 h-1 bg-gold mx-auto rounded-full"></div>
-        </div>
+    <div className="bg-gradient-to-b from-cream to-white py-16 px-6 md:px-12">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="font-playfair text-4xl font-bold mb-10 text-center gold-gradient">
+          {title}
+        </h2>
         
-        <div className="relative">
-          {/* Video container with responsive sizing */}
-          <div className="relative w-[85%] mx-auto aspect-video rounded-lg overflow-hidden shadow-2xl border-4 border-gold/30">
-            {/* Glowing border effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40 rounded-lg blur-sm -z-10"></div>
-            
+        <div className="relative w-full max-w-[90%] mx-auto">
+          <div className="relative group">
             <video
               ref={videoRef}
-              className="w-full h-full object-cover bg-black"
-              controls
-              preload="metadata"
-              muted={false}
+              className="w-full h-auto rounded-lg shadow-lg border-4 border-gold/30 transition-all duration-500 hover:shadow-xl"
+              style={{
+                aspectRatio: '16/9',
+                objectFit: 'cover',
+                boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
+              }}
+              muted={!isIntersecting}
+              loop
               playsInline
-              webkit-playsinline="true"
+              preload="metadata"
               controlsList="nodownload"
-              onLoadStart={() => console.log("Video loading started")}
-              onCanPlay={() => console.log("Video can play")}
             >
               <source src={videoSrc} type="video/mp4" />
               <p className="text-center text-muted-foreground p-8">
@@ -70,31 +87,29 @@ export const InvitationVideo = ({ videoSrc, title = "ఆహ్వాన వీ�
               </p>
             </video>
             
-            {/* Loading overlay */}
-            {!isInView && (
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-cream/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mb-4 mx-auto"></div>
-                  <p className="text-primary font-medium">వీడియో లోడ్ అవుతోంది...</p>
-                </div>
+            {/* Custom play/pause button overlay */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer rounded-lg"
+              onClick={togglePlayPause}
+            >
+              <div className="bg-white/90 rounded-full p-4 shadow-lg hover:scale-110 transition-transform duration-200">
+                {isPlaying ? (
+                  <Pause className="w-8 h-8 text-gold" />
+                ) : (
+                  <Play className="w-8 h-8 text-gold ml-1" />
+                )}
               </div>
-            )}
+            </div>
+            
+            {/* Glowing border effect */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40 -z-10 blur-sm rounded-lg" />
           </div>
           
-          {/* Decorative elements */}
-          <div className="absolute -top-4 -left-4 w-8 h-8 border-l-4 border-t-4 border-gold/40 rounded-tl-lg"></div>
-          <div className="absolute -top-4 -right-4 w-8 h-8 border-r-4 border-t-4 border-gold/40 rounded-tr-lg"></div>
-          <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l-4 border-b-4 border-gold/40 rounded-bl-lg"></div>
-          <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-4 border-b-4 border-gold/40 rounded-br-lg"></div>
-        </div>
-
-        {/* Video description */}
-        <div className="text-center mt-8">
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            మా గృహప్రవేశ వేడుక యొక్క ప్రత్యేక ఆహ్వాన వీడియో.
+          <p className="text-center text-muted-foreground mt-4 font-playfair italic">
+            మా గృహప్రవేశ వేడుక యొక్క ప్రత్యేక ఆహ్వాన వీడియో
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
