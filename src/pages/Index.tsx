@@ -5,6 +5,7 @@ import { LocationMap } from "@/components/ui/location-map";
 import { Countdown } from "@/components/ui/countdown";
 import { Footer } from "@/components/ui/footer";
 import { Gallery } from "@/components/ui/gallery";
+import { InvitationVideo } from "@/components/ui/invitation-video";
 
 const Index = () => {
   // Event schedule details in Telugu
@@ -100,6 +101,8 @@ const Index = () => {
         <Gallery />
 
         <EventDetails address={fullAddress} events={eventSchedule} />
+
+        <InvitationVideo videoSrc="/lovable-uploads/Invitation.mp4" />
 
         <LocationMap address={fullAddress} googleMapUrl={googleMapUrl} />
 
